@@ -41,8 +41,13 @@ public class ExpressionTree{
 
   /*return the value of the specified expression tree*/
   public double evaluate(){
-    /*you are to write this method*/
-    return 0.0;
+    if(isOp()){
+      char op = getOp();
+      double first = getLeft().evaluate();
+      double second = getRight().evaluate();
+      return perform(op,first,second);
+    }
+    return getValue();
     }
 
   /*use the correct operator on both a and b, and return that value*/
