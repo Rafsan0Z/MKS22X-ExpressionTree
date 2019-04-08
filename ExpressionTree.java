@@ -6,10 +6,10 @@ public class ExpressionTree{
   /* The sample tree would be: "(3 + (2 * 10))"     */
   public String toString(){
     if(isOp()){
-      char op = getOp() + " ";
+      char op = getOp();
       String one = getLeft().toString() + " ";
       String two = getRight().toString();
-      return "(" + one+op+two+ ")";
+      return "(" + one+op+" "+two+ ")";
     }
     return getValue() + "";
   }
@@ -31,10 +31,10 @@ public class ExpressionTree{
 
   public String toStringPrefix(){
     if(isOp()){
-      char op = getOp() + " ";
+      char op = getOp();
       String next = getLeft().toStringPrefix() + " ";
       String then = getRight().toStringPrefix();
-      return op+next+then;
+      return op+" "+next+then;
     }
     return getValue() + "";
   }
@@ -45,18 +45,19 @@ public class ExpressionTree{
       char op = getOp();
       double first = getLeft().evaluate();
       double second = getRight().evaluate();
-      return perform(op,first,second);
+      return apply(op,first,second);
     }
     return getValue();
     }
 
   /*use the correct operator on both a and b, and return that value*/
   private double apply(char op, double a, double b){
-    if(op == "+"){return a + b;}
-    else if(op == "-"){return a - b;}
-    else if(op == "*"){return a*b;}
-    else if(op == "/"){return a/b;}
-    else if(op == "%"){return a%b;}
+    if(op == '+'){return a + b;}
+    else if(op == '-'){return a - b;}
+    else if(op == '*'){return a*b;}
+    else if(op == '/'){return a/b;}
+    else if(op == '%'){return a%b;}
+    return -1;
     }
 
     ////////////////////ONLY EDIT ABOVE THIS LINE////////////////////
